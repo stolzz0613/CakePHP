@@ -96,10 +96,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 
 //Rutas para Users
 //Router::connect("/users/index", ["controller" => "Users", "action" => "index"]);
-Router::scope('/users', function ($routes) {
-    $routes->connect("/index", ["controller" => "Users", "action" => "index"]);
-    $routes->connect("/view/*", ["controller" => "Users", "action" => "view"]);
-});
+
 
 /*
  * If you need a different set of middleware or none at all,
