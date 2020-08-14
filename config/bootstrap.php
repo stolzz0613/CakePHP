@@ -183,6 +183,7 @@ ServerRequest::addDetector('tablet', function ($request) {
  * locale specific date formats. For details see
  * @link https://book.cakephp.org/3/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
  */
+
 Type::build('time')
     ->useImmutable();
 Type::build('date')
@@ -191,7 +192,7 @@ Type::build('datetime')
     ->useImmutable();
 Type::build('timestamp')
     ->useImmutable();
-
+    
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
