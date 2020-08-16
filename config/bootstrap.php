@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -68,6 +69,7 @@ use Cake\Utility\Security;
  * idea to create multiple configuration files, and separate the configuration
  * that changes from configuration that does not. This makes deployment simpler.
  */
+
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
@@ -183,15 +185,14 @@ ServerRequest::addDetector('tablet', function ($request) {
  * locale specific date formats. For details see
  * @link https://book.cakephp.org/3/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
  */
-
-Type::build('time')
-    ->useImmutable();
 Type::build('date')
-    ->useImmutable();
+    ->useLocaleParser();
 Type::build('datetime')
-    ->useImmutable();
-Type::build('timestamp')
-    ->useImmutable();
+    ->useLocaleParser();
+
+
+
+
     
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize

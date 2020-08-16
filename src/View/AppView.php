@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -11,9 +12,11 @@
  * @since     3.0.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\View;
 
 use Cake\View\View;
+use BootstrapUI\View\UIViewTrait;
 
 /**
  * Application View
@@ -24,7 +27,7 @@ use Cake\View\View;
  */
 class AppView extends View
 {
-
+    use UIViewTrait;
     /**
      * Initialization hook method.
      *
@@ -36,5 +39,6 @@ class AppView extends View
      */
     public function initialize()
     {
+        parent::initialize();
     }
 }

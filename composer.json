@@ -9,8 +9,11 @@
         "cakephp/cakephp": "3.9.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
+        "components/jquery": "^3.5",
+        "friendsofcake/bootstrap-ui": "^1.4",
         "fzaninotto/faker": "^1.9",
-        "mobiledetect/mobiledetectlib": "2.*"
+        "mobiledetect/mobiledetectlib": "2.*",
+        "twbs/bootstrap": "3.3.7"
     },
     "require-dev": {
         "cakephp/bake": "^1.9.0",
