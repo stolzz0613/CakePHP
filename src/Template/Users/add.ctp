@@ -10,9 +10,6 @@
             <?php echo $this->Form->control('last_name', ['label' => "Apellidos"]); ?>
             <?php echo $this->Form->control('email', ['label' => "Correo electrónico"]); ?>
             <?php echo $this->Form->control('password', ['label' => "Contraseña"]); ?>
-            <?php echo $this->Form->control('role', ["options" => ["admin" => "Administrator", "user" => 'User'], 'label' =>
-            "Rol"]); ?>
-            <?php echo $this->Form->control('active', ['label' => "Activo"]); ?>
         </fieldset>
 
 

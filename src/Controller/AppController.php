@@ -54,7 +54,8 @@ class AppController extends Controller
                     "fields" => [
                         "username" => "email",
                         "password" => "password"
-                    ]
+                    ],
+                    'finder' => "auth"
                 ]
             ],
             "loginAction" => [
@@ -69,7 +70,8 @@ class AppController extends Controller
             "logoutRedirect" => [
                 "controller" => "Users",
                 "action" => "login"
-            ]
+            ],
+            "unauthorizedRedirect" => $this->referer()
         ]);
         /*
          * Enable the following component for recommended CakePHP security settings.
@@ -79,6 +81,14 @@ class AppController extends Controller
     }
     public function isAuthorized($user)
     {
-        return true;
+        if (isset($user["role"]) and $user["role"] === "admin") {
+            return true;
+        }
+        return false;
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        $this->set("current_user", $this->Auth->user());
     }
 }
