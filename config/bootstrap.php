@@ -44,6 +44,7 @@ use Cake\Mailer\TransportFactory;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
+
 /*
  * Uncomment block of code below if you want to use `.env` file during development.
  * You should copy `config/.env.example` to `config/.env` and set/modify the
@@ -156,6 +157,7 @@ Email::setConfig(Configure::consume('Email'));
 Log::setConfig(Configure::consume('Log'));
 Security::setSalt(Configure::consume('Security.salt'));
 
+
 /*
  * The default crypto extension in 3.0 is OpenSSL.
  * If you are migrating from 2.x uncomment this code to
@@ -185,15 +187,10 @@ ServerRequest::addDetector('tablet', function ($request) {
  * locale specific date formats. For details see
  * @link https://book.cakephp.org/3/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
  */
-Type::build('date')
-    ->useLocaleParser();
-Type::build('datetime')
-    ->useLocaleParser();
+Type::build('date')->useLocaleParser();
+Type::build('datetime')->useLocaleParser();
 
 
-
-
-    
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
