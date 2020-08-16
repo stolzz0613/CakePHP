@@ -23,5 +23,10 @@
                     </ul>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <?= $this->Html->link("Salir", ["controller" => "Users", "action" => "logout"]) ?>
+                </li>
+            </ul>
         </div>
 </nav>
