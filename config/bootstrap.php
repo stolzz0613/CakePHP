@@ -18,7 +18,7 @@
  * Configure paths required to find CakePHP + general filepath constants
  */
 require __DIR__ . '/paths.php';
-
+require ROOT . DS . 'vendor' . DS . 'autoload.php';
 /*
  * Bootstrap CakePHP.
  *
@@ -187,9 +187,13 @@ ServerRequest::addDetector('tablet', function ($request) {
  * locale specific date formats. For details see
  * @link https://book.cakephp.org/3/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
  */
-Type::build('date')->useLocaleParser();
-Type::build('datetime')->useLocaleParser();
+date_default_timezone_set('America/Sao_Paulo');
+ini_set('intl.default_locale', 'pt_BR');
+\Cake\I18n\Time::setToStringFormat([IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT]);
 
+Inflector::rules('irregular', [
+    'solicitacao' => 'solicitacoes'
+]);
 
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
