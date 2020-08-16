@@ -16,15 +16,15 @@ class CreateAdminSeedMigration extends AbstractMigration
             "email"      => "and@utp.edu.co",
             "password"   => function () {
                 $hasher = new DefaultPasswordHasher();
-                return $hasher->hash("secret");
+                return "secret";
             },
             "role" => "admin",
-            "active"=>1,
-            "created" => function () use ($faker){
-                return $faker -> dateTimeBetween($startDate = "now", $endDate = "now");
+            "active" => 1,
+            "created" => function () use ($faker) {
+                return $faker->dateTimeBetween($startDate = "now", $endDate = "now");
             },
-            "modified" => function () use ($faker){
-                return $faker -> dateTimeBetween($startDate = "now", $endDate = "now");
+            "modified" => function () use ($faker) {
+                return $faker->dateTimeBetween($startDate = "now", $endDate = "now");
             }
         ]);
 
