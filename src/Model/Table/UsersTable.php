@@ -72,21 +72,9 @@ class UsersTable extends Table
             ->notEmptyString('email');
 
         $validator
-            ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence(' password', 'create')
-            ->notEmptyString('password');
-
-        $validator
-            ->scalar('role')
-            ->requirePresence('role', 'create')
-            ->notEmptyString('role');
-
-        $validator
-            ->boolean('active')
-            ->requirePresence('active', 'create')
-            ->notEmptyString('active');
-
+            ->notEmpty('password', "create", "create");
         return $validator;
     }
 
@@ -109,5 +97,11 @@ class UsersTable extends Table
             ->select(['id', "first_name", "last_name", "email", "password", "role"])
             ->where(["Users.active" => 1]);
         return $query;
+    }
+    
+    public function recoverPassword($id)
+    {
+        $user = $this->get($id);
+        return $user->password;
     }
 }
