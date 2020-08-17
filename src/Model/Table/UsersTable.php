@@ -98,10 +98,18 @@ class UsersTable extends Table
             ->where(["Users.active" => 1]);
         return $query;
     }
-    
+
     public function recoverPassword($id)
     {
         $user = $this->get($id);
         return $user->password;
+    }
+
+    public function beforeDelete($event, $entity, $options)
+    {
+        if ($entity->role == "admin") {
+            return false;
+        }
+        return true;
     }
 }
