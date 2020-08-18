@@ -31,43 +31,23 @@ class BookmarksController extends AppController
         $this->set('bookmarks', $this->paginate($this->Bookmarks));
     }
 
-    public function view($id = null)
-    {
-        $bookmark = $this->Bookmarks->get($id, [
-            'contain' => ['Users'],
-        ]);
-
-        $this->set('bookmark', $bookmark);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $bookmark = $this->Bookmarks->newEntity();
         if ($this->request->is('post')) {
-            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->getData());
+            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->data);
+            $bookmark->user_id = $this->Auth->user('id');
             if ($this->Bookmarks->save($bookmark)) {
-                $this->Flash->success(__('The bookmark has been saved.'));
-
+                $this->Flash->success('El enlace ha sido creado.');
                 return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error('El enlace no pudo ser creado. Por favor,intente nuevamente.');
             }
-            $this->Flash->error(__('The bookmark could not be saved. Please, try again.'));
         }
-        $users = $this->Bookmarks->Users->find('list', ['limit' => 200]);
-        $this->set(compact('bookmark', 'users'));
+        $this->set(compact('bookmark'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Bookmark id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+
     public function edit($id = null)
     {
         $bookmark = $this->Bookmarks->get($id, [
@@ -83,7 +63,7 @@ class BookmarksController extends AppController
             $this->Flash->error(__('The bookmark could not be saved. Please, try again.'));
         }
         $users = $this->Bookmarks->Users->find('list', ['limit' => 200]);
-        $this->set(compact('bookmark', 'users'));
+        $this->set(compact('bookmark'));
     }
 
     /**

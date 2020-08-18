@@ -260,7 +260,7 @@ return [
      */
     'Datasources' => [
         'default' => [
-             'className' => 'Cake\Database\Connection',
+            'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',

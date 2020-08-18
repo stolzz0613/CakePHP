@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use Cake\ORM\Query;
@@ -55,22 +56,18 @@ class BookmarksTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
+            ->add('id', "valid", ["rule" => "numeric"])
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->scalar('title')
-            ->maxLength('title', 255)
             ->requirePresence('title', 'create')
             ->notEmptyString('title');
 
         $validator
-            ->scalar('description')
             ->requirePresence('description', 'create')
             ->notEmptyString('description');
 
         $validator
-            ->scalar('url')
             ->requirePresence('url', 'create')
             ->notEmptyString('url');
 
@@ -87,7 +84,6 @@ class BookmarksTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-
         return $rules;
     }
 }
